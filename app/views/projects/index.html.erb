@@ -1,0 +1,40 @@
+<h1>Projects#index</h1>
+
+<form>
+    <%= select_tag :state, options_for_select(Project.states) %>
+</form>
+
+<form action="/project/create" id="create_project">
+    <div class="container">
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Name" class="form-control">
+            <input type="text" name="description" placeholder="description" class="form-control">
+            <input type="text" name="start_date" placeholder="start_date">
+
+        </div>
+        <input type="submit" value="Crear Project" class="btn btn-primary">
+    </div>
+</form>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">description</th>
+      <th scope="col">start_date</th>
+      <th scope="col">end_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+    <tr>
+      <th scope="row"><%= project.id %></th>
+      <td><%= project.title %></td>
+      <td><%= project.description %></td>
+      <td><%= project.start_date %></td>
+      <td><%= project.end_date %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
